@@ -46,15 +46,23 @@
                                 <tr>
                                     <td>{{$noticia->titulo}}</td>
                                     <td>
-                                        <button class="btn btn-primary">
+                                        <form method="POST" 
+                                            action="{{route('noticias.destroy',$noticia->id)}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a 
+                                            href="{{route('noticias.show',$noticia->id)}}"
+                                            class="btn btn-primary">
                                             <i class="fas fa-eye"></i>
-                                        </button>
-                                        <a href="{{route('noticias.edit',$noticia->id)}}" class="btn btn-primary">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <button class="btn btn-danger">
-                                            <i class="fas fa-times"></i>
-                                        </button>
+                                            </a>
+                                            <a href="{{route('noticias.edit',$noticia->id)}}" class="btn btn-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <button type="submit" 
+                                                class="btn btn-danger">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
