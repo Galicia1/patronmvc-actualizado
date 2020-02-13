@@ -8,25 +8,32 @@ use App\Noticia;
 
 class NoticiaController extends Controller
 {
-    public function index() {
-        
-        $noticias = Noticia::all();
+
+    public function index(){
+
+        $noticias = Noticia::all(); 
 
         $argumentos = array();
         $argumentos['noticias'] = $noticias;
-        
-        return view('noticias.index', $argumentos);
+
+        return view('noticias.index', $argumentos); //Se ira a la carpete resources, a la carpeta view. El view solo te va a leer los archivos .blade.php
+
     }
 
-    public function show($id) {
-        //Busca un registro a partir de la
-        //llave primaria
+    public function show($id){
+
+
+        //Busca un registro a partir de la llave primaria
         //SELECT * FROM noticias WHERE id = 4
         $noticia = Noticia::find($id);
 
         $argumentos = array();
         $argumentos['noticia'] = $noticia;
+        
+        return view('noticias.show', $argumentos);
 
-        return view('noticias.show',$argumentos);
     }
+
+
+
 }

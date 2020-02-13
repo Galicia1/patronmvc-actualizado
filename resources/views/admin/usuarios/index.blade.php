@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
-@section('titulo','Administración | Noticias')
-@section('titulo2','Noticias')
+@section('titulo', 'Administración | Usuarios')
+@section('titulo2', 'Usuarios')
 
 @section('breadcrumbs')
 @endsection
@@ -34,42 +34,41 @@
 
 <div class="container-fluid">
     <div class="row">
-
         <div class="col-md-12">
 
-            @if(Session::has('exito'))
-            <div class="alert alert-success alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h5><i class="icon fas fa-check"></i>¡Exito!</h5>
-                {{Session::get('exito')}}
-              </div>
+        @if(Session::has('exito'))
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> ¡EXITO!</h5>
+                    {{Session::get('exito')}}
+                </div>
             @endif
 
             @if(Session::has('error'))
-            <div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h5><i class="icon fas fa-check"></i> ¡Error! </h5>
-                {{Session::get('error')}}
-              </div>
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> ¡ERROR!</h5>
+                    {{Session::get('error')}}
+                </div>
             @endif
 
             <div class="card">
 
                 <div class="card-header">
-
-                    <h3 class="card-title">Lista de noticias</h3>
-
+                    <h3 class="card-title">Lista de usuarios</h3>
                 </div>
-                
-                <div class="card-body">
-                    <a href="{{route('noticias.create')}}" class="btn btn-success">
-                        <i class="fas fa-plus"></i>Agregar noticia
-                    </a>
 
-                    <table class="table">
+                <div class="card-body">
+
+                    <a href="{{route('usuarios.create')}}" class="btn btn-success">
+                        <i class="fas fa-plus"></i>Agregar Usuarios
+                    </a>
+                    
+                <table class="table">
+
                         <thead>
                             <tr>
-                                <th>Noticia</th>
+                                <th>Usuarios</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -78,35 +77,42 @@
 
                             <!-- Aquí van las noticias -->
 
-                            @foreach($noticias as $noticia)
+                            @foreach($usuarios as $usuario)
+
                                 <tr>
-                                    <td>{{$noticia->titulo}}</td>
+                                    <td>{{$usuario->name}}</td>
 
                                     <td>
-                                        <form method="POST" action="{{route('noticias.destroy', $noticia->id)}}">
+                                        
 
-                                            <a href="{{route('noticias.show',$noticia->id)}}" class="btn btn-primary">
+                                            <a href="{{route('usuarios.show',$usuario->id)}}" class="btn btn-primary">
                                                 <i class="fas fa-eye"></i>
                                             </a>
 
-                                            <a href="{{route('noticias.edit',$noticia->id)}}" class="btn btn-success">
+                                            <a href="{{route('usuarios.edit',$usuario->id)}}" class="btn btn-success">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             
-                                                @csrf
-                                                @method('DELETE')
+                                                
 
-                                                <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$noticia->id}})" data-target="#DeleteModal" class="btn btn-danger">
-                                                    <i class="fas fa-times"></i>
-                                                </a>
-                                        </form>
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$usuario->id}})" data-target="#DeleteModal" class="btn btn-danger">
+                                                <i class="fas fa-times"></i>
+                                            </a>
+                                        
                                     </td>
 
                                 </tr>
+
                             @endforeach
+                            
                         </tbody>
                     </table>
+
                 </div>
+
             </div>
         </div>
     </div>
@@ -118,7 +124,7 @@
     function deleteData(id)
     {
         var id = id;
-        var url = '{{ route("noticias.destroy", ":id") }}';
+        var url = '{{ route("usuarios.destroy", ":id") }}';
         url = url.replace(':id', id);
         $("#deleteForm").attr('action', url);
     }

@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 
-@section('titulo', 'Administración | Editar noticia')
-@section('titulo2', 'Noticias')
+@section('titulo', 'Administración | ' .$usuario->name)
+@section('titulo2', 'Usuarios')
 
 @section('breadcrumbs')
 @endsection
 
 @section('contenido')
 
-<a class="btn btn-success btn-sm" style="margin-left: 11px" href="{{route('noticias.index')}}">
+<a class="btn btn-success btn-sm" style="margin-left: 11px" href="{{route('usuarios.index')}}">
     <i class="fas fa-arrow-left"></i>
-        Volver a lista de noticias
+        Volver a lista de usuarios
 </a>
 
 <br/>
@@ -39,34 +39,14 @@
             <div class="card">
                 <div class="card-header">
 
-                    <h3 class="card-title"> Editar noticia: {{$noticia->id}} </h3>
+                    <h3 class="card-title"> Mostrar usuario: {{$usuario->id}} </h3>
                     
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{route('noticias.update',$noticia->id)}}">
-
-                            @csrf
-                            @method('PUT')
-
-                        <div class="form-group">
-
-                            <label >Titulo</label>
-                            <input name= "txtTitulo" type="text" value="{{$noticia->titulo}}" class="form-control" />
-    
-                        </div>
-                        <div class="form-group">
-
-                            <label >Cuerpo</label>
-                            <textarea name="txtCuerpo" rows="12" class="form-control">{{$noticia->cuerpo}}</textarea>
-
-                        </div>
-                        <div class="form-group">
-
-                            <button class="btn btn-primary">Actualizar</button>
-
-                        </div>
-
-                    </form>
+                    
+                    <h1>{{$usuario->name}}</h1>
+                    <h3>{{$usuario->email}}</h3>
+                    
                     
                 </div>
             </div>

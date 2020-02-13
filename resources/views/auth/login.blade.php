@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Noticias | Iniciar sesión</title>
+  <title>Noticias | Iniciar Sesión</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,17 +21,17 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    Noticias
+    <b>AMLO-MAÑANERO NEW'S</b>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Ingresa tus credenciales para iniciar sesión</p>
 
-      <form method="POST" action="{{ route('login') }}">
+      <form method="POST" action="{{ route('login') }}" >
           @csrf
         <div class="input-group mb-3">
-          <input name="email" type="email" class="form-control" placeholder="Email">
+          <input name="email" type="email" class="form-control" placeholder="Email" Autocomplete="off"> 
           
           <div class="input-group-append">
             <div class="input-group-text">
@@ -39,8 +39,11 @@
             </div>
           </div>
         </div>
+        
+            
+
         <div class="input-group mb-3">
-          <input name="password" type="password" class="form-control" placeholder="Password">
+          <input name="password" type="password" class="form-control" placeholder="Password" >
           
           <div class="input-group-append">
             <div class="input-group-text">
@@ -49,32 +52,36 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-6">
+        <div class="col-6">
             
           </div>
           <!-- /.col -->
           <div class="col-6">
-            <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
           </div>
           <!-- /.col -->
         </div>
-        <div>
-         @error('email')
-            <small class="text-danger">{{ $message }}</small>
-           
-          @enderror
-          @error('password')
 
-            <small class="text-danger">{{ $message }}</small>
-          
-         @enderror
+        <div >
+            @error('email')
+                    <span class="text-danger">
+                        <b>{{ $message }}</b>
+                    </span>
+            @enderror
+
+            @error('password')
+                    <span class="text-danger">
+                        <b>{{ $message }}</b>
+                    </span>
+            @enderror
         </div>
+
       </form>
 
       
       <!-- /.social-auth-links -->
 
-     
+      
     </div>
     <!-- /.login-card-body -->
   </div>
