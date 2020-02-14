@@ -17,12 +17,18 @@
                     
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{route('noticias.store')}}">
+                    <form method="POST" enctype="multipart/form-data" action="{{route('noticias.store')}}">
                             @csrf
                         <div class="form-group">
 
                             <label for="">Titulo</label>
                             <input type="text" name="txtTitulo" class="form-control" />
+    
+                        </div>
+                        <div class="form-group">
+
+                            <label>Image</label>
+                            <input type="file" name="imgPortada" class="form-control" />
     
                         </div>
                         <div class="form-group">

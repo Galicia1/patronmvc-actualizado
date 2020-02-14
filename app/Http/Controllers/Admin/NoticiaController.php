@@ -55,7 +55,12 @@ class NoticiaController extends Controller
         $noticia = new Noticia();
         $noticia->titulo = $request->input('txtTitulo');
         $noticia->cuerpo = $request->input('txtCuerpo');
+        if ($request->hasFile('imgPortada')){
+            $archivoPortada= $request->file("imgPortada");
+            $rutaarchivo= $archivoPortada-> store("portadas");
 
+            $noticia->portada = $rutaArchivo();
+        }
         if ($noticia->save()) {
 
             //Si pude guardar la noticia
