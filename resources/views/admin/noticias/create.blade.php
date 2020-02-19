@@ -25,12 +25,13 @@
                             <input type="text" name="txtTitulo" class="form-control" />
     
                         </div>
-                        <div class="form-group">
 
-                            <label>Image</label>
+                        <div class="form-group" >
+                            <label for="">Imagen de Portada</label>
                             <input type="file" name="imgPortada" class="form-control" />
-    
+                        
                         </div>
+
                         <div class="form-group">
 
                             <label >Cuerpo</label>

@@ -16,12 +16,12 @@
           <div class="modal-content">
               <div class="modal-header bg-danger">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title text-center">Borrar Noticia</h4>
+                  <h4 class="modal-title text-center">Borrar Usuario</h4>
               </div>
               <div class="modal-body">
                  @csrf
                  @method('DELETE')
-                  <p class="text-center">¿Seguro que quieres borrar la noticia?</p>
+                  <p class="text-center">¿Seguro que quieres borrar al usuario ?</p>
               </div>
               <div class="modal-footer">
                       <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>

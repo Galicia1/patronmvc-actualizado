@@ -55,12 +55,16 @@ class NoticiaController extends Controller
         $noticia = new Noticia();
         $noticia->titulo = $request->input('txtTitulo');
         $noticia->cuerpo = $request->input('txtCuerpo');
-        if ($request->hasFile('imgPortada')){
-            $archivoPortada= $request->file("imgPortada");
-            $rutaarchivo= $archivoPortada-> store("portadas");
 
-            $noticia->portada = $rutaArchivo();
+        if ($request->hasFile('imgPortada')) {
+
+            $archivoPortada = $request->file('imgPortada');
+            $rutaArchivo = $archivoPortada->store('portadas');
+            $noticia->portada = $rutaArchivo;
+
         }
+        
+
         if ($noticia->save()) {
 
             //Si pude guardar la noticia
@@ -133,6 +137,7 @@ class NoticiaController extends Controller
 
             $noticia->titulo = $request->input('txtTitulo');
             $noticia->cuerpo = $request->input('txtCuerpo');
+            //$noticia->portada = $request->input('imgPortada');
             if($noticia->save()){
 
                 return redirect()->route('noticias.edit',$id)->with('exito','¡La noticia se ACTUALIZÓ exitosamente!');
